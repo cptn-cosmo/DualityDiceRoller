@@ -14,7 +14,7 @@ Clicking the button automatically runs the `/dr` chat command.
 ## 📦 Installation
 
 1. In Foundry VTT, go to **Settings → Add-on Modules → Install Module**.
-2. Paste this manifest link: `https://raw.githubusercontent.com/cptn_cosmo/DualityDiceRoller/main/module.json`
+2. Paste this manifest link: `https://github.com/cptn-cosmo/DualityDiceRoller/releases/latest/download/module.json`
 3. Enable the module in **World Settings → Manage Modules**.
 
 ---
