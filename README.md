@@ -2,6 +2,7 @@
 
 A simple Foundry VTT module that adds a custom **"Duality Dice Roller"** button to the chat controls.  
 Clicking the button automatically runs the `/dr` chat command.
+Works only with the Foundryborne Daggerheart system.
 
 ---
 
@@ -20,8 +21,11 @@ Clicking the button automatically runs the `/dr` chat command.
 ---
 
 ## 🔨 Usage
-- Open the chat log.
-- Look for the **Duality Dice Roller** button (🎲 custom dice icon).
-- Click it → `/dr` command runs automatically in chat.
+- Look for the **Duality Dice Roller** button (custom dice icon).
+- Click it → Duality Dice Roll window pops up.
 
-<img width="301" height="157" alt="Screenshot_20250831_145145" src="https://github.com/user-attachments/assets/b828013b-e59a-4b65-968e-dfacbc113a56" />
+## 🖼️ Screenshots
+
+![Chat Panel Closed](screenshots/chat_closed.png)
+
+![Chat Panel Open](screenshots/chat_open.png)
