@@ -23,3 +23,5 @@ Clicking the button automatically runs the `/dr` chat command.
 - Open the chat log.
 - Look for the **Duality Dice Roller** button (🎲 custom dice icon).
 - Click it → `/dr` command runs automatically in chat.
+
+<img width="301" height="157" alt="Screenshot_20250831_145145" src="https://github.com/user-attachments/assets/b828013b-e59a-4b65-968e-dfacbc113a56" />
