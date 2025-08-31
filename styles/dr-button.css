@@ -3,22 +3,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 28px;
-  margin-left: 4px;
-  border: 1px solid var(--color-border-light-2, #8882);
-  border-radius: 4px;
-  background: var(--color-bg, #222e);
-  cursor: pointer;
-  padding: 1;
+  padding: 7px;
 }
 
-.dr-quick-button:hover {
-  filter: brightness(1.15);
+.dr-quick-button-container {
+  margin: 0px 10px;
 }
 
-.dr-quick-button img {
-  width: 18px;
-  height: 18px;
-  pointer-events: none;
+.vertical .dr-quick-button-container {
+  margin: 10px 0px;
 }
