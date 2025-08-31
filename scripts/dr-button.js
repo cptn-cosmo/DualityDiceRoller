@@ -13,21 +13,15 @@ Hooks.on("renderChatLog", (app, html) => addDRButton(html));
 // Mini/Popout chat
 Hooks.on("renderChatPopout", (app, html) => addDRButton(html));
 
-function addDRButton(html) {
+function addDRButton() {
     try {
         // Avoid duplicates
-        if (html.querySelector(".dr-quick-button")) return;
-
-        const container =
-        html.querySelector(".dice-tray") ||
-        html.querySelector(".chat-controls .control-buttons") ||
-        html.querySelector(".chat-controls") ||
-        html;
+        //if (document.querySelector(".dr-quick-button")) return;
 
         // Build button
         const btn = document.createElement("button");
         btn.type = "button";
-        btn.className = "dr-quick-button";
+        btn.className = "ui-control icon fas-solid dr-quick-button";
         btn.title = "Duality Dice Roll";
         btn.setAttribute("aria-label", "Duality Dice Roll");
 
@@ -56,18 +50,14 @@ function addDRButton(html) {
         </g>
         </svg>
         `;
-
         btn.addEventListener("click", async () => {
+            console.log("clicked the button");
             await runDRCommand();
         });
 
-        // Append the button at the end of the roll-privacy div
-        const rollPrivacyDiv = container.querySelector("#roll-privacy");
-        if (rollPrivacyDiv) {
-            rollPrivacyDiv.appendChild(btn);
-        } else {
-            container.appendChild(btn); // fallback if the div doesn't exist
-        }
+        // Find all roll-privacy divs and append the button
+        const rollPrivacyDivs = document.querySelectorAll("#roll-privacy");
+        rollPrivacyDivs.forEach(div => div.appendChild(btn.cloneNode(true)));
 
     } catch (err) {
         console.error("DR Quick Button | addDRButton error:", err);
@@ -75,37 +65,14 @@ function addDRButton(html) {
 }
 
 
+
 /** Run `/dr` as if typed into chat */
 async function runDRCommand() {
-    const cmd = "/dr";
-
     try {
-        if (ui?.chat?.processMessage) return await ui.chat.processMessage(cmd);
-    } catch (e) {
-        console.warn("DR Quick Button | ui.chat.processMessage failed:", e);
+        await ChatMessage.create({ content: "/dr" });
+    } catch (err) {
+        console.error("DR Quick Button | Failed to send /dr command:", err);
+        ui.notifications?.warn("Couldn't run /dr automatically. Try typing /dr in chat.");
     }
-
-    try {
-        if (globalThis.ChatLog?.instance?.processMessage) {
-            return await globalThis.ChatLog.instance.processMessage(cmd);
-        }
-    } catch (e) {
-        console.warn("DR Quick Button | ChatLog.instance.processMessage failed:", e);
-    }
-
-    try {
-        const form = ui.chat?.element?.querySelector?.("form#chat-form");
-        const textarea = form?.querySelector?.("textarea[name='message']");
-        if (form && textarea) {
-            const prev = textarea.value;
-            textarea.value = cmd;
-            form.dispatchEvent(new Event("submit", { bubbles: true, cancelable: true }));
-            setTimeout(() => (textarea.value = prev ?? ""), 0);
-            return;
-        }
-    } catch (e) {
-        console.warn("DR Quick Button | Fallback submit failed:", e);
-    }
-
-    ui.notifications?.warn?.("Couldn't run /dr automatically. Try typing /dr in chat.");
 }
+
