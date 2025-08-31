@@ -61,7 +61,14 @@ function addDRButton(html) {
             await runDRCommand();
         });
 
-        container.appendChild(btn); // fallback if fewer than 4 buttons
+        // Append the button at the end of the roll-privacy div
+        const rollPrivacyDiv = container.querySelector("#roll-privacy");
+        if (rollPrivacyDiv) {
+            rollPrivacyDiv.appendChild(btn);
+        } else {
+            container.appendChild(btn); // fallback if the div doesn't exist
+        }
+
     } catch (err) {
         console.error("DR Quick Button | addDRButton error:", err);
     }
