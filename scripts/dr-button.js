@@ -61,13 +61,7 @@ function addDRButton(html) {
             await runDRCommand();
         });
 
-        // Insert as the 5th button in the row (index 4, since it's 0-based)
-        const buttons = container.querySelectorAll("button");
-        if (buttons.length >= 4) {
-            container.insertBefore(btn, buttons[4]); // before the current 5th button
-        } else {
-            container.appendChild(btn); // fallback if fewer than 4 buttons
-        }
+        container.appendChild(btn); // fallback if fewer than 4 buttons
     } catch (err) {
         console.error("DR Quick Button | addDRButton error:", err);
     }
