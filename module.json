@@ -1,6 +1,6 @@
 {
   "id": "duality-roller",
-  "title": "Duality Dice Roller",
+  "title": "Daggerheart Duality Dice Roller",
   "description": "Adds a button next to the chat dice/controls that triggers the /dr command for the Foundryborne Daggerheart system.",
   "version": "0.1.4",
   "compatibility": {
