@@ -15,28 +15,31 @@ Hooks.on("renderChatPopout", (_app, _html) => addDRButton());
 
 function addDRButton() {
     try {
-        const container = document.createElement("div");
-        container.className = "dr-quick-button-container";
-
-        // Build button
-        const btn = document.createElement("button");
-        btn.type = "button";
-        btn.className = "ui-control icon fas-solid dr-quick-button";
-        btn.title = "Duality Dice Roll";
-        btn.setAttribute("aria-label", "Duality Dice Roll");
-
-        // Inline SVG (or use icon.src = "modules/dr-quick-button/icons/dr.svg"; if external)
-        btn.innerHTML = `<img src="systems/daggerheart/assets/icons/dice/duality/Daggerheart Foundry_g489.png" alt="DR" style="width:12px; height:16px;">
-        `;
-        btn.addEventListener("click", async () => {
-            await runDRCommand();
-        });
-
-        container.appendChild(btn);
-
-        // Find all roll-privacy divs and append the button
+        // Find all roll-privacy divs and append one button per container, avoiding duplicates
         const rollPrivacyDivs = document.querySelectorAll("#roll-privacy");
-        rollPrivacyDivs.forEach(div => div.appendChild(container));
+        rollPrivacyDivs.forEach(div => {
+            // If this container already has our button, skip adding another
+            if (div.querySelector(".dr-quick-button-container")) return;
+
+            const container = document.createElement("div");
+            container.className = "dr-quick-button-container";
+
+            // Build button
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "ui-control icon fas-solid dr-quick-button";
+            btn.title = "Duality Dice Roll";
+            btn.setAttribute("aria-label", "Duality Dice Roll");
+
+            // Inline SVG (or use icon.src = "modules/dr-quick-button/icons/dr.svg"; if external)
+            btn.innerHTML = `<img src="systems/daggerheart/assets/icons/dice/duality/Daggerheart Foundry_g489.png" alt="DR" style="width:12px; height:16px;">`;
+            btn.addEventListener("click", async () => {
+                await runDRCommand();
+            });
+
+            container.appendChild(btn);
+            div.appendChild(container);
+        });
 
     } catch (err) {
         console.error("DR Quick Button | addDRButton error:", err);
