@@ -2,19 +2,25 @@
   "id": "duality-roller",
   "title": "Daggerheart Duality Dice Roller",
   "description": "Adds a button next to the chat dice/controls that triggers the /dr command for the Foundryborne Daggerheart system.",
-  "version": "1.1.6",
+  "version": "1.2.0",
   "compatibility": {
     "minimum": "13",
-    "verified": "13"
+    "verified": "14"
   },
   "authors": [
-    { "name": "cptn_cosmo" }
+    {
+      "name": "cptn_cosmo"
+    }
   ],
-  "esmodules": ["scripts/dr-button.js"],
-  "styles": ["styles/dr-button.css"],
+  "esmodules": [
+    "scripts/dr-button.js"
+  ],
+  "styles": [
+    "styles/dr-button.css"
+  ],
   "packs": [],
   "languages": [],
-  "url": "https://github.com/cptn-cosmo/DualityDiceRoller",
+  "url": "https://git.geeks.gay/cosmo/DualityDiceRoller",
   "manifest": "https://git.geeks.gay/cosmo/DualityDiceRoller/raw/branch/main/module.json",
-  "download": "https://git.geeks.gay/cosmo/DualityDiceRoller/releases/download/1.1.6/DualityDiceRoller.zip"
+  "download": "https://git.geeks.gay/cosmo/DualityDiceRoller/releases/download/1.2.0/DualityDiceRoller.zip"
 }
